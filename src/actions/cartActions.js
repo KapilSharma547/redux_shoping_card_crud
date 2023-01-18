@@ -6,6 +6,8 @@ import {
 } from "./types";
 
 export const addToCart = (items, product) => (dispatch) => {
+  // console.log("items, product===>", items, product);
+  // in iteams All Cart Items
   const cartItems = items.slice();
   let productAlreadyInCart = false;
 
@@ -24,6 +26,7 @@ export const addToCart = (items, product) => (dispatch) => {
 };
 
 export const removeFromCart = (items, product) => (dispatch) => {
+  // console.log("items, product===>", items, product);
   const cartItems = items.slice().filter((a) => a.id !== product.id);
   localStorage.setItem("cartItems", JSON.stringify(cartItems));
   dispatch({ type: REMOVE_FROM_CART, payload: { cartItems } });

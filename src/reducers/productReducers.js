@@ -8,7 +8,11 @@ const initState = { items: [], filteredItems: [], size: "", sort: "" };
 export default function productReducer(state = initState, action) {
   switch (action.type) {
     case FETCH_PRODUCTS:
+      // console.log("State in FetcProduct reducer==>", state);
+      // console.log("action in FetcProduct reducer==>", action);
       return { ...state, items: action.payload, filteredItems: action.payload };
+
+
     case FILTER_PRODUCTS_BY_SIZE:
       return {
         ...state,

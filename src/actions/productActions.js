@@ -1,10 +1,11 @@
+import { useState } from "react";
 import {
   FETCH_PRODUCTS,
   FILTER_PRODUCTS_BY_SIZE,
   ORDER_PRODUCTS_BY_PRICE,
 } from "./types";
 
-export const fetchProducts = () => (dispatch) => {
+export const fetchProducts = () => async (dispatch) => {
   fetch("http://localhost:8000/products")
     .then((res) => res.json())
     .catch((err) =>
@@ -17,6 +18,7 @@ export const fetchProducts = () => (dispatch) => {
     });
 };
 
+// ========
 export const filterProducts = (products, size) => (dispatch) => {
   dispatch({
     type: FILTER_PRODUCTS_BY_SIZE,
@@ -32,8 +34,11 @@ export const filterProducts = (products, size) => (dispatch) => {
   });
 };
 
+// =======
 export const sortProducts = (items, sort) => (dispatch) => {
   const products = items.slice();
+  // console.log("items====>", items);
+  // console.log("sort===>", sort);
   if (sort !== "") {
     products.sort((a, b) =>
       sort === "lowestprice"

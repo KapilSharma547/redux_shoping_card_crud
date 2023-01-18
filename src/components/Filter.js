@@ -54,13 +54,16 @@ const Filter = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  products: state.products.items,
-  filteredProducts: state.products.filteredItems,
-  cartItems: state.cart.items,
-  size: state.products.size,
-  sort: state.products.sort,
-});
+const mapStateToProps = (state) => {
+  // console.log("state====<>===<>", state);
+  return {
+    products: state.products.items,
+    filteredProducts: state.products.filteredItems,
+    cartItems: state.cart.items,
+    size: state.products.size,
+    sort: state.products.sort,
+  };
+};
 export default connect(mapStateToProps, { filterProducts, sortProducts })(
   Filter
 );
